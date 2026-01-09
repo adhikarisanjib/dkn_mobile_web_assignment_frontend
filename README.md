@@ -20,14 +20,14 @@ Follow these steps to set up and run the frontend development server:
 #### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/adhikarisanjib/dkn_mobile_web_assignment.git
+git clone https://github.com/adhikarisanjib/dkn_mobile_web_assignment_frontend.git
 ```
 
 #### 2. Navigate to Frontend Directory
 
 
 ```bash
-cd frontend
+cd dkn_mobile_web_assignment_frontend
 ```
 
 #### 3. Install Dependencies
