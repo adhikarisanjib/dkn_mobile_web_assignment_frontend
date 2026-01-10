@@ -1,5 +1,6 @@
 import { ImCross } from "react-icons/im";
 
+
 const Modal = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
 

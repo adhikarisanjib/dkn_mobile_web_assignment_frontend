@@ -3,6 +3,8 @@ import axios from "axios";
 
 import ArtifactCard from "../components/ArtifactCard";
 import { useAuth } from "../context/AuthProvider";
+import { API_BASE_URL as apiBaseUrl } from "../types";
+
 
 const PersonalArtifacts = () => {
 
@@ -15,7 +17,7 @@ const PersonalArtifacts = () => {
         const fetchArtifacts = async () => {
             try {
                 const token = await getAccessToken();
-                const response = await axios.get("http://localhost:8000/api/artifacts/my-artifacts", {
+                const response = await axios.get(`${apiBaseUrl}/api/artifacts/my-artifacts`, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                         "Authorization": `Bearer ${token}`,

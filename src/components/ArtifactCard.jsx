@@ -3,6 +3,7 @@ import { useState } from "react";
 import ArtifactDetail from "./ArtifactDetail";
 import Modal from "./Modal";
 
+
 const ArtifactCard = ({ artifact }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 

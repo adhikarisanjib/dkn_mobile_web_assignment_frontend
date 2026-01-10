@@ -10,6 +10,7 @@ import { useAuth } from "../context/AuthProvider";
 import { useUser } from "../context/UserProvider";
 import { SystemRole } from "../types";
 
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);

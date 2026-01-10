@@ -5,8 +5,9 @@ import axios from "axios";
 
 import { useAuth } from "../context/AuthProvider";
 import { useUser } from "../context/UserProvider";
-
 import { ReviewDecision } from "../types";
+import { API_BASE_URL as apiBaseUrl } from "../types";
+
 
 const ArtifactReviewDecision = ({ artifactId, currentDecision }) => {
 
@@ -26,7 +27,7 @@ const ArtifactReviewDecision = ({ artifactId, currentDecision }) => {
 
         try {
             const token = await getAccessToken();
-            const response = await axios.post(`http://localhost:8000/api/review-artifact/${artifactId}`, {
+            const response = await axios.post(`${apiBaseUrl}/api/review-artifact/${artifactId}`, {
                 comments,
                 decision,
             }, {

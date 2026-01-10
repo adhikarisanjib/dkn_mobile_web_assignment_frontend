@@ -2,7 +2,11 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
+import { API_BASE_URL as apiBaseUrl } from "../types";
+
+
 const AuthContext = createContext();
+
 
 export const useAuth = () => {
     const context = useContext(AuthContext);
@@ -11,6 +15,7 @@ export const useAuth = () => {
     }
     return context;
 };
+
 
 export const AuthProvider = ({ children }) => {
     const [accessToken, setAccessToken] = useState(null);
@@ -63,7 +68,7 @@ export const AuthProvider = ({ children }) => {
             if (decodedToken.exp < currentTime) {
 
                 try {
-                    const response = await axios.post("http://localhost:8000/api/refresh-token", {
+                    const response = await axios.post(`${apiBaseUrl}/api/refresh-token`, {
                         'refresh_token': refreshToken
                     });
                     // console.log("Access token refreshed:", response.data);

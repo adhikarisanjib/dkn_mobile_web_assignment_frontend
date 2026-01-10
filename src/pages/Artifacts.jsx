@@ -5,6 +5,8 @@ import axios from "axios";
 import ArtifactDetail from "../components/ArtifactDetail";
 import Modal from "../components/Modal";
 import { useAuth } from "../context/AuthProvider";
+import { API_BASE_URL as apiBaseUrl } from "../types";
+
 
 const Artifacts = () => {
 
@@ -17,7 +19,7 @@ const Artifacts = () => {
 
     const fetchArtifacts = async (shouldUpdateSelected = false) => {
         try {
-            const response = await axios.get("http://localhost:8000/api/artifacts", {
+            const response = await axios.get(`${apiBaseUrl}/api/artifacts`, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },

@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import axios from "axios";
 
 import { useAuth } from "../context/AuthProvider";
+import { API_BASE_URL as apiBaseUrl } from "../types";
 
 
 const CreateArtifact = () => {
@@ -28,7 +29,7 @@ const CreateArtifact = () => {
 
         try {
             const token = await getAccessToken();
-            await axios.post("http://localhost:8000/api/create-artifact", formData, {
+            await axios.post(`${apiBaseUrl}/api/create-artifact`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Authorization": `Bearer ${token}`,

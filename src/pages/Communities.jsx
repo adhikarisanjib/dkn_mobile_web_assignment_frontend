@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { useAuth } from "../context/AuthProvider";
 import { useUser } from "../context/UserProvider";
-import { SystemRole } from "../types";
+import { SystemRole, API_BASE_URL as apiBaseUrl } from "../types";
+
 
 const Communities = () => {
 
@@ -19,7 +19,7 @@ const Communities = () => {
     useEffect(() => {
         const fetchCommunities = async () => {
             try {
-                const response = await axios.get("http://localhost:8000/api/communities", {
+                const response = await axios.get(`${apiBaseUrl}/api/communities`, {
                     headers: {
                         "Content-Type": "application/json",
                     },
@@ -47,14 +47,14 @@ const Communities = () => {
         try {
             const token = await getAccessToken();
             if (isFollowing) {
-                await axios.post(`http://localhost:8000/api/communities/${communityId}/unfollow`, {}, {
+                await axios.post(`${apiBaseUrl}/api/communities/${communityId}/unfollow`, {}, {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
                     },
                 });
             } else {
-                await axios.post(`http://localhost:8000/api/communities/${communityId}/follow`, {}, {
+                await axios.post(`${apiBaseUrl}/api/communities/${communityId}/follow`, {}, {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
@@ -62,7 +62,7 @@ const Communities = () => {
                 });
             }
             // Refresh community list to reflect changes
-            const response = await axios.get("http://localhost:8000/api/communities", {
+            const response = await axios.get(`${apiBaseUrl}/api/communities`, {
                 headers: {
                     "Content-Type": "application/json",
                 },

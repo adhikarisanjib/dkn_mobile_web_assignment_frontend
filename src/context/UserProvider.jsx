@@ -2,8 +2,11 @@ import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
 import { useAuth } from "./AuthProvider";
+import { API_BASE_URL as apiBaseUrl } from "../types";
+
 
 const UserContext = createContext();
+
 
 export const useUser = () => {
     const context = useContext(UserContext);
@@ -12,6 +15,7 @@ export const useUser = () => {
     }
     return context;
 };
+
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -23,7 +27,7 @@ export const UserProvider = ({ children }) => {
             const token = await getAccessToken();
             if (token) {
                 try {
-                    const response = await axios.get("http://localhost:8000/api/profile", {
+                    const response = await axios.get(`${apiBaseUrl}/api/profile`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }

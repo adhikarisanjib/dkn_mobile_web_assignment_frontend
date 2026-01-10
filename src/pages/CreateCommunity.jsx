@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import axios from "axios";
 
 import { useAuth } from "../context/AuthProvider";
+import { API_BASE_URL as apiBaseUrl } from "../types";
 
 
 const CreateCommunity = () => {
@@ -18,7 +19,7 @@ const CreateCommunity = () => {
 
         try {
             const token = await getAccessToken();
-            await axios.post("http://localhost:8000/api/create-community", { name, description }, {
+            await axios.post(`${apiBaseUrl}/api/create-community`, { name, description }, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,

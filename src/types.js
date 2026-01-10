@@ -29,4 +29,6 @@ const Region = {
     "SOUTH AMERICA": "SOUTH_AMERICA"
 }
 
-export { SystemRole, ArtifactStatus, ReviewDecision, Region };
+const API_BASE_URL = "http://localhost:8000";
+
+export { SystemRole, ArtifactStatus, ReviewDecision, Region, API_BASE_URL };

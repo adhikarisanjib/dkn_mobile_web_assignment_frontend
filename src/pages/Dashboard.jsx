@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import { useAuth } from "../context/AuthProvider";
+import { API_BASE_URL as apiBaseUrl } from "../types";
+
 
 const Dashboard = () => {
 
@@ -13,7 +15,7 @@ const Dashboard = () => {
         const fetchDashboardDetails = async () => {
             try {
                 const token = await getAccessToken();
-                const response = await axios.get("http://localhost:8000/api/dashboard", {
+                const response = await axios.get(`${apiBaseUrl}/api/dashboard`, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                         "Authorization": `Bearer ${token}`,

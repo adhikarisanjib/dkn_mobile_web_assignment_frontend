@@ -2,12 +2,12 @@ import { useState, useEffect, use } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
 import { BiStar } from "react-icons/bi";
+import axios from "axios";
 
 import { useAuth } from "../context/AuthProvider";
 import { useUser } from "../context/UserProvider";
-import { ReviewDecision, ArtifactStatus } from "../types";
+import { ReviewDecision, ArtifactStatus, API_BASE_URL as apiBaseUrl } from "../types";
 
 
 const ArtifactDetail = ({ id, title, content, summary, fileUrl, status, createdBy, reviewRequested, review, ratings, onRatingUpdate }) => {
@@ -32,7 +32,7 @@ const ArtifactDetail = ({ id, title, content, summary, fileUrl, status, createdB
         
         try {
             const token = await getAccessToken();
-            await axios.post(`http://localhost:8000/api/rate-artifact/${id}`, {
+            await axios.post(`${apiBaseUrl}/api/rate-artifact/${id}`, {
                 "artifact_id": id,
                 "score": newRating,
             }, {
@@ -54,7 +54,7 @@ const ArtifactDetail = ({ id, title, content, summary, fileUrl, status, createdB
     const handleReviewRequest = async () => {
         try {
             const token = await getAccessToken();
-            const res = await axios.post(`http://localhost:8000/api/request-review/${id}`, {}, {
+            const res = await axios.post(`${apiBaseUrl}/api/request-review/${id}`, {}, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,
@@ -70,7 +70,7 @@ const ArtifactDetail = ({ id, title, content, summary, fileUrl, status, createdB
     const handlePublishArtifact = async () => {
         try {
             const token = await getAccessToken();
-            const res = await axios.post(`http://localhost:8000/api/publish-artifact/${id}`, {}, {
+            const res = await axios.post(`${apiBaseUrl}/api/publish-artifact/${id}`, {}, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,

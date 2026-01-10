@@ -5,6 +5,7 @@ import axios from "axios";
 
 import { SystemRole, Region } from "../types";
 import { useAuth } from "../context/AuthProvider";
+import { API_BASE_URL as apiBaseUrl } from "../types";
 
 
 const Register = () => {
@@ -37,7 +38,7 @@ const Register = () => {
             return;
         }
 
-        axios.post("http://localhost:8000/api/register", {
+        axios.post(`${apiBaseUrl}/api/register`, {
             'name': name,
             'email': email,
             'role': role,

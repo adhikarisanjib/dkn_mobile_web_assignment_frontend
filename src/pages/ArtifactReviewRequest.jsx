@@ -3,9 +3,11 @@ import axios from "axios";
 
 import { useAuth } from "../context/AuthProvider";
 import { useUser } from "../context/UserProvider";
+import { API_BASE_URL as apiBaseUrl } from "../types";
 
 import Modal from "../components/Modal";
 import ArtifactReviewDecision from "../components/ArtifactReviewDecision";
+
 
 const ArtifactReviewRequests = () => {
 
@@ -23,7 +25,7 @@ const ArtifactReviewRequests = () => {
         const fetchReviewRequests = async () => {
             try {
                 const token = await getAccessToken();
-                const response = await axios.get("http://localhost:8000/api/review-requests", {
+                const response = await axios.get(`${apiBaseUrl}/api/review-requests`, {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,

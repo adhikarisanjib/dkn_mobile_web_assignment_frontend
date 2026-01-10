@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import axios from "axios";
 
 import { useAuth } from "../context/AuthProvider";
+import { API_BASE_URL as apiBaseUrl } from "../types";
 
 
 const UpdateArtifact = () => {
@@ -24,7 +25,7 @@ const UpdateArtifact = () => {
         const fetchArtifact = async () => {
             try {
                 const token = await getAccessToken();
-                const response = await axios.get(`http://localhost:8000/api/artifacts/${id}`, {
+                const response = await axios.get(`${apiBaseUrl}/api/artifacts/${id}`, {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
@@ -61,7 +62,7 @@ const UpdateArtifact = () => {
 
         try {
             const token = await getAccessToken();
-            await axios.put(`http://localhost:8000/api/artifacts/${id.replaceAll("-", "")}`, formData, {
+            await axios.put(`${apiBaseUrl}/api/artifacts/${id.replaceAll("-", "")}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Authorization": `Bearer ${token}`,
