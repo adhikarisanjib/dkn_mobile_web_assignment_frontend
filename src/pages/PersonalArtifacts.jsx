@@ -49,7 +49,12 @@ const PersonalArtifacts = () => {
                             key={artifact.id}
                             artifact={artifact}
                         />
-                    )) : <p className="text-center col-span-full">No artifacts found.</p>}
+                    )) : <>
+                        <p className="text-gray-600 dark:text-gray-400 mb-4">You haven't created any artifacts yet.</p>
+                        <Link to="/create-artifact" className="ml-4 px-6 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 cursor-pointer">
+                            Create Your First Artifact
+                        </Link>
+                    </>}
                 </div>
             )}
 

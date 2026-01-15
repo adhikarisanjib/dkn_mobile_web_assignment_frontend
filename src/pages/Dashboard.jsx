@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { useAuth } from "../context/AuthProvider";
@@ -124,9 +125,9 @@ const Dashboard = () => {
                         ) : (
                             <div className="border border-gray-300 rounded p-8 text-center ">
                                 <p className="text-gray-600 dark:text-gray-400 mb-4">You haven't created any artifacts yet.</p>
-                                <button className="px-6 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 cursor-pointer">
+                                <Link to="/create-artifact" className="ml-4 px-6 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 cursor-pointer">
                                     Create Your First Artifact
-                                </button>
+                                </Link>
                             </div>
                         )}
                     </div>
